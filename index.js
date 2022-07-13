@@ -10,6 +10,10 @@ import { handleValidationErrors, checkAuth } from "./utils/index.js";
 
 import { UserController, PostController } from "./controllers/index.js";
 
+import dotenv from "dotenv";
+
+dotenv.config();
+
 mongoose
 	.connect(process.env.MONGODB_URI)
 	.then(() => console.log("DB ok"))

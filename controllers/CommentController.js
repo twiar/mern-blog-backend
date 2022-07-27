@@ -3,16 +3,16 @@ import CommentModel from "../models/Comment.js";
 export const createComment = async (req, res) => {
 	try {
 		const doc = new CommentModel({
-			title: req.body.title,
+			fullName: req.body.fullName,
 			text: req.body.text,
-			user: req.userId,
+			avatarUrl: req.avatarUrl,
 		});
 
 		const post = await doc.save();
 
 		res.json(post);
 	} catch (err) {
-		console.log(err);
+		console.warn(err);
 		res.status(500).json({
 			message: "Не удалось создать комментарий",
 		});

@@ -14,7 +14,12 @@ import {
 
 import { handleValidationErrors, checkAuth } from "./utils/index.js";
 
-import { UserController, PostController, CommentController } from "./controllers/index.js";
+import {
+	UserController,
+	PostController,
+	CommentController,
+	ImageController,
+} from "./controllers/index.js";
 
 import dotenv from "dotenv";
 
@@ -75,12 +80,15 @@ app.post(
 	CommentController.createComment,
 );
 app.delete("/posts/:id", checkAuth, PostController.remove);
+app.delete("/uploads/:imgName", checkAuth, ImageController.remove);
 app.patch("/posts/:id", checkAuth, postCreateValidation, PostController.update);
 
 app.listen(process.env.PORT || 4444, (err) => {
 	if (err) {
-		return console.log(err);
+		return console.warn(err);
 	}
+
+	console.log(process.env);
 
 	console.log("Server OK");
 });

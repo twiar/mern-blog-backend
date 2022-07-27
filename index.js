@@ -72,13 +72,16 @@ app.get("/posts", PostController.getAll);
 app.get("/posts/tags", PostController.getLastTags);
 app.get("/posts/:id", PostController.getOne);
 app.post("/posts", checkAuth, postCreateValidation, handleValidationErrors, PostController.create);
+
+app.get("/posts/:id/comments", CommentController.getAll);
 app.post(
-	"/posts/:id",
+	"/posts/:id/comments",
 	checkAuth,
 	commentCreateValidation,
 	handleValidationErrors,
 	CommentController.createComment,
 );
+
 app.delete("/posts/:id", checkAuth, PostController.remove);
 app.delete("/uploads/:imgName", checkAuth, ImageController.remove);
 app.patch("/posts/:id", checkAuth, postCreateValidation, PostController.update);
@@ -87,8 +90,5 @@ app.listen(process.env.PORT || 4444, (err) => {
 	if (err) {
 		return console.warn(err);
 	}
-
-	console.log(process.env);
-
 	console.log("Server OK");
 });

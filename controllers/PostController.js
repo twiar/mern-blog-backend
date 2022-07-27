@@ -1,4 +1,6 @@
 import PostModel from "../models/Post.js";
+import { unlink } from "node:fs";
+import process from "node:process";
 
 export const getLastTags = async (req, res) => {
 	try {
@@ -90,6 +92,11 @@ export const remove = async (req, res) => {
 					});
 				}
 
+				unlink(`${process.cwd()}${doc.imageUrl.replace(/\//g, "\\")}`, (err) => {
+					if (err) throw err;
+					console.log(`${doc.imageUrl} was deleted`);
+				});
+
 				res.json({
 					success: true,
 				});
@@ -109,7 +116,7 @@ export const create = async (req, res) => {
 			title: req.body.title,
 			text: req.body.text,
 			imageUrl: req.body.imageUrl,
-			tags: req.body.tags.split(","),
+			tags: req.body.tags.replace(/\s/g, "").split(","),
 			user: req.userId,
 		});
 

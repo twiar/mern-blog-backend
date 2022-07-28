@@ -16,7 +16,7 @@ export const remove = async (req, res) => {
 	} catch (err) {
 		console.warn(err);
 		res.status(500).json({
-			message: "Не удалось получить статьи",
+			message: "Failed to get posts",
 		});
 	}
 };

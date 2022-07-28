@@ -15,7 +15,7 @@ export const getLastTags = async (req, res) => {
 	} catch (err) {
 		console.warn(err);
 		res.status(500).json({
-			message: "Не удалось получить статьи",
+			message: "Failed to get posts",
 		});
 	}
 };
@@ -27,7 +27,7 @@ export const getAll = async (req, res) => {
 	} catch (err) {
 		console.warn(err);
 		res.status(500).json({
-			message: "Не удалось получить статьи",
+			message: "Failed to get posts",
 		});
 	}
 };
@@ -50,13 +50,13 @@ export const getOne = async (req, res) => {
 				if (err) {
 					console.warn(err);
 					return res.status(500).json({
-						message: "Не удалось вернуть статьи",
+						message: "Failed to get post",
 					});
 				}
 
 				if (!doc) {
 					return res.status(404).json({
-						message: "Статья не найдена",
+						message: "Post not found",
 					});
 				}
 
@@ -66,7 +66,7 @@ export const getOne = async (req, res) => {
 	} catch (err) {
 		console.warn(err);
 		res.status(500).json({
-			message: "Не удалось получить статьи",
+			message: "Failed to get posts",
 		});
 	}
 };
@@ -82,13 +82,13 @@ export const remove = async (req, res) => {
 				if (err) {
 					console.warn(err);
 					return res.status(500).json({
-						message: "Не удалось удалить статьи",
+						message: "Failed to delete posts",
 					});
 				}
 
 				if (!doc) {
 					return res.status(404).json({
-						message: "Статья не найдена",
+						message: "Post not found",
 					});
 				}
 
@@ -105,7 +105,7 @@ export const remove = async (req, res) => {
 	} catch (err) {
 		console.warn(err);
 		res.status(500).json({
-			message: "Не удалось получить статьи",
+			message: "Failed to get posts",
 		});
 	}
 };
@@ -126,7 +126,7 @@ export const create = async (req, res) => {
 	} catch (err) {
 		console.warn(err);
 		res.status(500).json({
-			message: "Не удалось создать статью",
+			message: "Failed to create post",
 		});
 	}
 };
@@ -153,7 +153,7 @@ export const update = async (req, res) => {
 	} catch (err) {
 		console.warn(err);
 		res.status(500).json({
-			message: "Не удалось обновить статью",
+			message: "Failed to update post",
 		});
 	}
 };

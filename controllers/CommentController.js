@@ -17,7 +17,7 @@ export const createComment = async (req, res) => {
 	} catch (err) {
 		console.warn(err);
 		res.status(500).json({
-			message: "Не удалось создать комментарий",
+			message: "Failed to create comment",
 		});
 	}
 };
@@ -25,12 +25,11 @@ export const createComment = async (req, res) => {
 export const getAll = async (req, res) => {
 	try {
 		const comments = await CommentModel.find().populate("user").exec();
-		console.log(comments);
 		res.json(comments);
 	} catch (err) {
 		console.warn(err);
 		res.status(500).json({
-			message: "Не удалось получить статьи",
+			message: "Failed to get posts",
 		});
 	}
 };
